@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_package = "com.tradery.grpc.stubs";
+package signalservice;
+// Define the SignalRequest message containing input parameters.
+message SignalRequest {
+  string modelName = 1;
+  string tickerSymbol = 2;
+  string strategy = 3;
+}
+// Define the SignalResponse message containing the numeric signal.
+message SignalResponse {
+  int32 signal = 1;
+}
+// Define the SignalService service.
+service Signal {
+  // RPC method to get a numeric signal.
+  rpc GetSignal(SignalRequest) returns (SignalResponse);
+}
